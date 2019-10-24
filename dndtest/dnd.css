@@ -1,0 +1,14 @@
+.draggable {
+  draggable: true;
+  background-color: blue;
+  width: 100px;
+  ondragstart: 'onDragStart(e);'; 
+}
+
+#dropzone {
+  ondragover: "onDragOver(e);";
+  ondrop: 'onDrop(e);';
+  width: 100%;
+  height: 300px;
+  background-color: green;
+}
