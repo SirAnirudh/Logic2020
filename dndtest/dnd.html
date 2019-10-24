@@ -9,15 +9,64 @@
   <body>
 
     <div id="statement">
-      Blah blah blah
+      Quincy, who studies hard, also will pass, unless Sidney will fail to pass only on the condition that he fails to study hard.
     </div>
-    <div id="dropzone">
-      drop here
+    <div id="solution">
     </div>
 
-    <div class="draggable" draggable="true" id="test">
-      draggable
+    <div id="logicSymbols">
+      <table id="questionSymbols">
+        <tbody>
+          <tr>
+            <th>Symbol</th>
+            <th>English</th>
+          </tr>
+          <tr>
+            <td><div class="draggable" id="Q">Q</div></td>
+            <td>Quincy will pass</td>
+          </tr>
+          <tr>
+            <td><div class="draggable" id="S">S</td>
+            <td>Sidney will pass</td>
+          </tr>
+          <tr>
+            <td><div class="draggable" id="U">U</td>
+            <td>Quincy studies hard</td>
+          </tr>
+          <tr>
+            <td><div class="draggable" id="X">X</td>
+            <td>Sidney studies hard</td>
+          </tr>
+        </tbody>
+      </table>
+      <table id="generalSymbols">
+        <tbody>
+          <tr>
+            <th>Symbol</th>
+            <th>Meaning</th>
+          </tr>
+          <tr>
+            <td><div class="draggable containOne" id="~">~</div></td>
+            <td>Negation</td>
+          </tr>
+          <tr>
+            <td><div class="draggable containTwo" id="^">^</td>
+            <td>Conjunction</td>
+          </tr>
+          <tr>
+            <td><div class="draggable containTwo" id="v">v</td>
+            <td>Disjunction</td>
+          </tr>
+          <tr>
+            <td><div class="draggable containTwo" id="=>">=></td>
+            <td>Implication</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
+    Answer string:
+    <p id="solutionString">
+    </p id="solutionString">
 
     <script type="text/javascript" src="dnd.js"></script>
   </body>
