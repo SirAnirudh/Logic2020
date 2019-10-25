@@ -9,15 +9,14 @@
   <body>
 
     <div id="statement">
-      Quincy, who studies hard, also will pass, unless Sidney will fail to pass only on the condition that he fails to study hard.
     </div>
 
     <div id="answerBox">
     </div>
 
     <div id="logicSymbols">
-      <table id="questionSymbols">
-        <tbody>
+      <table>
+        <tbody id="statementEvents">
           <tr>
             <th>Symbol</th>
             <th>English</th>
@@ -32,19 +31,19 @@
             <th>Meaning</th>
           </tr>
           <tr>
-            <td><div class="draggable container negation" id="negation">~<div class="inner"></div></div></td>
+            <td><div class="draggable container negation" id="negation">~<div class="inner" id="negationR"></div></div></td>
             <td>Negation</td>
           </tr>
           <tr>
-            <td><div class="draggable container conjunction" id="conjunction"><div class="inner"></div>^<div class="inner"></div></td>
+            <td><div class="draggable container conjunction" id="conjunction"><div class="inner" id="conjunctionL"></div>^<div class="inner" id="conjunctionR"></div></td>
             <td>Conjunction</td>
           </tr>
           <tr>
-            <td><div class="draggable container disjunction" id="disjunction"><div class="inner"></div>v<div class="inner"></div></td>
+            <td><div class="draggable container disjunction" id="disjunction"><div class="inner" id="disjunctionL"></div>v<div class="inner" id="disjunctionR"></div></td>
             <td>Disjunction</td>
           </tr>
           <tr>
-            <td><div class="draggable container implication" id="implication"><div class="inner"></div>=><div class="inner"></div></td>
+            <td><div class="draggable container implication" id="implication"><div class="inner" id="implicationL"></div>=><div class="inner" id="implicationR"></div></td>
             <td>Implication</td>
           </tr>
         </tbody>
