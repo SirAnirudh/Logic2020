@@ -1,45 +1,71 @@
 // Select needed DOM elements
 const draggables = document.getElementsByClassName("draggable");
-const solution = document.getElementById("solution");
-let solutionString = document.getElementById("solutionString");
+const answerBox = document.getElementById("answerBox");
+const answerString = document.getElementById("answerString");
 
 // Add event listeners
 for (let i = 0; i < draggables.length; i++){
-  console.log("added event listener");
   draggables[i].addEventListener("dragstart", onDragStart);
   draggables[i].setAttribute('draggable', true);
 }
+answerBox.addEventListener("dragover", onDragOver);
+answerBox.addEventListener("drop", onAnswerDrop);
 
-solution.addEventListener("dragover", onDragOver);
-solution.addEventListener("drop", onDrop);
-
-// Set up element to be dragged
+// Store info of dragged element 
 function onDragStart(e){
-  console.log("dragged");
-  e
-    .dataTransfer
-    .setData('text/plain', e.target.id);
-  e
-    .dataTransfer
-    .effectAllowed = 'copy';
+  e.dataTransfer.setData('text/plain', e.target.id);
+  // If menu object, copy, else move
+  if (e.target.classList.contains("active")){
+    e.dataTransfer.effectAllowed = 'move';
+  }
+  else {
+    e.dataTransfer.effectAllowed = 'copy';
+  }
 }
 
 function onDragOver(e){
-  console.log("dragged");
   e.preventDefault();
 }
 
-function onDrop(e) {
-  console.log("dropped");
-  const id = e
-    .dataTransfer
-    .getData('text');
+// When object dragged into an answer container 
+function onAnswerDrop(e) {
+  // Get id of dragged object
+  const id = e.dataTransfer.getData('text');
 
-  const draggableElement = document.getElementById(id);
-  const copy = draggableElement.cloneNode(true);
-  const solution = event.target;
+  const draggedElement = document.getElementById(id);
+  console.log(draggedElement.id);
 
-  solution.appendChild(copy);
+  let target = draggedElement;
+  // If menu object, copy, else move
+  if (target.classList.contains("active")) {
+    answerBox.appendChild(target);
+    target.addEventListener("dragstart", onDragStart);
+  }
+  else {
+    target = draggedElement.cloneNode(true);
+    // get collection of all elements with same id
+    const sameId = document.getElementsByClassName(id);
+    target.id = target.id.concat(sameId.length.toString());
+    e.target.appendChild(target);
+    console.log(target.id);
+    target.classList.add("active");
+    target.addEventListener("dragstart", onDragStart);
+      if (target.classList.contains("container")){
+        innerBoxes = target.children;
+        for (let i = 0; i < target.children.length; i++){
+          innerBoxes[i].addEventListener("dragover", onDragOver);
+          innerBoxes[i].addEventListener("drop", onAnswerDrop);
+        }
+      }
+  }
+
+  e.dataTransfer.clearData();
+
+  updateString();
+}
+
+function onBoxDrop(e) {
+  console.log("Dropped in inner");
 
   event
     .dataTransfer
@@ -49,16 +75,12 @@ function onDrop(e) {
 }
 
 function updateString(){
-  const children = solution.children;
-  console.log(children.length);
+  const children = answerBox.children;
   let answer = "";
 
   for (let i = 0; i < children.length; i++){
-    console.log(i)
     answer = answer.concat(children[i].innerText);
-    console.log(children[i].innerText);
-    console.log(answer);
   }
 
-  solutionString.innerText = answer;
+  answerString.innerText = answer;
 }

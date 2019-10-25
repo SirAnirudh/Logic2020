@@ -11,7 +11,8 @@
     <div id="statement">
       Quincy, who studies hard, also will pass, unless Sidney will fail to pass only on the condition that he fails to study hard.
     </div>
-    <div id="solution">
+
+    <div id="answerBox">
     </div>
 
     <div id="logicSymbols">
@@ -21,24 +22,9 @@
             <th>Symbol</th>
             <th>English</th>
           </tr>
-          <tr>
-            <td><div class="draggable" id="Q">Q</div></td>
-            <td>Quincy will pass</td>
-          </tr>
-          <tr>
-            <td><div class="draggable" id="S">S</td>
-            <td>Sidney will pass</td>
-          </tr>
-          <tr>
-            <td><div class="draggable" id="U">U</td>
-            <td>Quincy studies hard</td>
-          </tr>
-          <tr>
-            <td><div class="draggable" id="X">X</td>
-            <td>Sidney studies hard</td>
-          </tr>
         </tbody>
       </table>
+
       <table id="generalSymbols">
         <tbody>
           <tr>
@@ -46,27 +32,28 @@
             <th>Meaning</th>
           </tr>
           <tr>
-            <td><div class="draggable containOne" id="~">~</div></td>
+            <td><div class="draggable container negation" id="negation">~<div class="inner"></div></div></td>
             <td>Negation</td>
           </tr>
           <tr>
-            <td><div class="draggable containTwo" id="^">^</td>
+            <td><div class="draggable container conjunction" id="conjunction"><div class="inner"></div>^<div class="inner"></div></td>
             <td>Conjunction</td>
           </tr>
           <tr>
-            <td><div class="draggable containTwo" id="v">v</td>
+            <td><div class="draggable container disjunction" id="disjunction"><div class="inner"></div>v<div class="inner"></div></td>
             <td>Disjunction</td>
           </tr>
           <tr>
-            <td><div class="draggable containTwo" id="=>">=></td>
+            <td><div class="draggable container implication" id="implication"><div class="inner"></div>=><div class="inner"></div></td>
             <td>Implication</td>
           </tr>
         </tbody>
       </table>
     </div>
+
     Answer string:
-    <p id="solutionString">
-    </p id="solutionString">
+    <p id="answerString">
+    </p>
 
     <script type="text/javascript" src="dnd.js"></script>
   </body>
