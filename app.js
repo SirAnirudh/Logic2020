@@ -33,6 +33,11 @@ app.use(bodyParser.urlencoded({extended: false}));
 require('./routes/questionRoutes')(app)
 require('./routes/studentRoutes')(app)
 
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', '*');
+  next();
+});
+
 app.get('/', (req, res) => {
     res.send({'hi':'hello'})
 });
@@ -41,4 +46,3 @@ app.get('/', (req, res) => {
 const PORT = process.env.PORT || 5000
 
 app.listen(PORT)
-

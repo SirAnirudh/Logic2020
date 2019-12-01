@@ -1,7 +1,8 @@
-const myAssignments = []
+const log = console.log;
+const myAssignments = [];
 const questions = [];
 
-// ID of currently displayed question 
+// ID of currently displayed question
 let currentQuestion = 0;
 
 class Question {
@@ -30,11 +31,26 @@ class Assignment {
 // get number of assignments, should get from server
 let numberOfAssignments = 0;
 
-// get question text and answer, should get from server 
+// get question text and answer, should get from server
+function loadQuestions() {
+  var xhr = new XMLHttpRequest();
+  xhr.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+     log(this.responseText);
+   } else {
+     log("error");
+   }
+  };
+  xhr.open("GET", "localhost:5000/questions", true);
+  xhr.send();
+};
+log("loading Questions");
+loadQuestions();
+
 const HTML1 = "<p class='questionTitle'> W → X. </p>"
-                   + "<p class='questionTitle'> ~X. </p>" 
+                   + "<p class='questionTitle'> ~X. </p>"
                    + "<div class='h-line'> </div>"
-                   + "<p class='questionTitle'> ∴~W </p>" 
+                   + "<p class='questionTitle'> ∴~W </p>"
 const HTML2 = "<p class='questionTitle'> P → P. </p>"
             + "<p class='questionTitle'> P </p>"
             + "<div class='h-line'></div>"
